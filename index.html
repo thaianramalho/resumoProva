@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>aaaaa</title>
+</head>
+<body>
+<h1 id="resumo-de-redes---etapa-2">Resumo de Redes - ETAPA 2</h1>
+<h2 id="algoritmos-de-roteamento-em-redes-de-computadores">Algoritmos de roteamento em redes de computadores</h2>
+<ul>
+<li>A principal função da camada de rede é rotear os pacotes da máquina de origem até a máquina de destino.</li>
+<li>O roteamento depende do fato de a origem e o destino não estarem na mesma rede.</li>
+</ul>
+<p><strong>Algoritmo de roteamento</strong> é a parte do software da camada de rede responsável pela decisão sobre a linha de saída a ser usada na transmissão do pacote de entrada.</p>
+<p><strong>Roteamento</strong> é diferente de <strong>encaminhamento</strong></p>
+<ul>
+<li><p>O roteamento é a tomada de decisão sobre quais rotas utilizar</p></li>
+<li><p>O encaminhamento é o que acontece quando um pacote chega</p></li>
+</ul>
+<p>Os algoritmos de roteamento podem ser não adaptativos. A escolha das rotas é previamente calculada off-line quando a rede é inicializada, às vezes, esse procedimento é chamado roteamento estático.</p>
+<p>Os algoritmos adaptativos mudam suas decisões de roteamento para refletir mudanças na topologia e no tráfego.</p>
+<p><strong>Princípio da otimização</strong></p>
+<ul>
+<li>Se J está no caminho ótimo entre I e K, o caminho ótimo de J até K está na mesma rota.</li>
+</ul>
+<p><strong>Roteamento pelo caminho mais curto</strong></p>
+<p>Consiste em criar um grafo da sub-rede, cada nó representa um roteador e cada arco uma linha de comunicação (enlace), o algoritmo encontra o caminho mais curto entre um par de roteadores.</p>
+<p><strong>Dijkstra</strong></p>
+<ul>
+<li>É um dos algoritmos que calcula o caminho de custo mínimo entre vértices de um grafo. Escolhido um vértice como raiz da busca, este algoritmo calcula o custo mínimo deste vértice para todos os demais vértices do grafo. Ele é bastante simples e com um bom nível de performance. Ao descobrir o menor caminho, ele não o altera mais.</li>
+</ul>
+<p><strong>Inundação (Flooding)</strong></p>
+<ul>
+<li><p>Um algoritmo de inundação é um algoritmo para distribuir informação para todos nós de um grafo. Cada nó age como um receptor e transmissor de mensagens, e cada mensagem recebida é retransmitida para todos os vizinhos do nó, exceto pelo nó do qual a mensagem foi originada.</p></li>
+<li><p>Outra opção é fazer uma inundação seletiva, onde os roteadores enviam cada pacote de entrada apenas para as linhas que provavelmente estão na direção certa.</p></li>
+</ul>
+<p><strong>Roteamento com vetor de distância</strong></p>
+<ul>
+<li>Os algoritmos de roteamento com vetor de distância operam fazendo cada roteador manter uma tabela que fornece a melhor distância conhecida até cada destino e determina qual linha deve ser utilizada para se chegar lá. Essas tabelas são atualizadas através da troca de informações com os vizinhos.</li>
+</ul>
+<p><strong>Algoritmo de roteamento por estado de enlace (Link State)</strong></p>
+<ul>
+<li><p>Este algoritmo trabalha baseado na ideia de que cada roteador possui informações sobre as redes que estão conectadas a ele e, periodicamente, testa para determinar se cada enlace está ativo.</p></li>
+<li><p>Cada roteador manda um pacote HELLO para todas as suas saídas para colher informações das redes.</p></li>
+</ul>
+<p><strong>Roteamento hierárquico</strong></p>
+<ul>
+<li>O roteamento hierárquico reduz significativamente o tamanho das tabelas de roteamento e a necessidade de poder computacional dos roteadores. Mas existe um custo associado a esta vantagem, que é o aumento do tamanho dos caminhos.</li>
+</ul>
+<p><img src="roteamentoRegioes.png" /></p>
+<p><strong>Camada de enlace</strong></p>
+<ul>
+<li><p>Um protocolo da camada de enlace é usado para transportar um datagrama por um enlace individual.</p></li>
+<li><p>Uma característica importante da camada de enlace é que um datagrama pode ser transportado por diferentes protocolos de enlace nos diferentes enlaces no caminho.</p></li>
+<li><p>O serviço básico da camada de enlace é mover um datagrama de um nó até outro nó adjacente, porém, os detalhes do serviço podem variar de um protocolo da camada de enlace para outro.</p></li>
+</ul>
+<p>Possíveis serviços que podem ser oferecidos por um protocolo da camada de enlace:</p>
+<ul>
+<li><p><strong>Enquadramento de dados:</strong> Quase todos os protocolos da camada de enlace encapsulam cada datagrama de camada de rede dentro de um quadro de camada de enlace antes de transmiti-lo pelo enlace.</p></li>
+<li><p><strong>Acesso ao enlace:</strong> Um protocolo de controle de acesso ao meio especifica as regras segundo as quais um quadro é transmitido pelo enlace. Para enlaces ponto a ponto que tem um único remetente em uma extremidade e um único receptor na outra extremidade, o protocolo MAC é simples (ou inexistente).</p></li>
+<li><p><strong>Entrega confiável:</strong> Garantir que o transporte de cada datagrama entre um enlace e outro vai ocorrer sem erros.</p></li>
+<li><p><strong>Controle de Fluxo:</strong> Os nós de cada lado de um enlace têm uma capacidade limitada de armazenar quadros. O controle de fluxo envolve enviar os dados a uma velocidade em que o receptor seja capaz de processar sem estourar o limite de capacidade de recepção.</p></li>
+<li><p><strong>Detecção de erros:</strong> Muitos protocolos da camada de enlace oferecem um mecanismo para detectar a presença de erros. Isso é feito obrigando o nó transmissor a enviar bits de detecção de erros no quadro e obrigando o nó receptor a realizar uma verificação de erros.</p></li>
+<li><p><strong>Correção de erros:</strong> Determina exatamente em que lugar do quadro os erros ocorreram, com isso, o erro pode ser corrigido em alguns casos.</p></li>
+<li><p><strong>Half-duplex e full-duplex:</strong> Com transmissão full-duplex, os nós em ambas as extremidades de um enlace podem transmitir pacotes ao mesmo tempo. Com transmissão half-duplex, um nó não pode transmitir e receber pacotes ao mesmo tempo.</p></li>
+</ul>
+<p><strong>Implementação da camada de enlace</strong></p>
+<ul>
+<li>A camada de enlace é implementada em um adaptador de rede, por vezes também conhecido como controlador de interface de rede (NIC). No núcleo do adaptador de rede está o controlador da camada de enlace, normalmente um único chip que implementa vários serviços da camada de enlace.</li>
+</ul>
+<p><strong>Técnicas de detecção e correção de erros</strong></p>
+<p>O desafio de um receptor é determinar se os dados D’ recebidos são iguais aos dados D originais.</p>
+<p><strong>Verificação de paridade</strong></p>
+<ul>
+<li>Essa técnica consiste em “forçar” os bits transmitidos a serem sempre par, desse modo, se ao transmitir um dado juntamente com um bit de paridade, o valor for ímpar, fica claro que ocorreu um erro em algum dos bits.</li>
+</ul>
+<p><img src="paridade.png" /></p>
+<p><strong>Métodos de soma de verificação</strong></p>
+<ul>
+<li>Os bytes de dados são tratados como inteiros de 16 bits e somados. O complemento de 1 dessa soma forma a soma de verificação.</li>
+</ul>
+<p><strong>Verificação de redundância cíclica (CRC)</strong></p>
+<ul>
+<li><p>Códigos de CRC também são conhecidos como códigos polinomiais, já que é possível considerar a cadeia de bits a ser enviada como um polinômio cujos coeficientes são os valores 0 e 1 na cadeia de bits.</p></li>
+<li><p>Ao chegar no destino, os bits D + R são divididos por G, caso o resto não dê 0 (zero), sabe-se que ocorreu um ERRO.</p></li>
+</ul>
+<h3 id="protocolos-de-acesso-ao-meio">Protocolos de acesso ao meio</h3>
+<p><strong>MAC Deterministas</strong></p>
+<ul>
+<li>São protocolos em que é possível estimar o tempo de resposta, mesmo que no pior caso.</li>
+</ul>
+<p><strong>Mac não deterministas</strong></p>
+<ul>
+<li><p>Não se pode prever qual será o tempo de resposta.</p></li>
+<li><p>Os protocolos do tipo CSMA se encaixam nessa categoria.</p></li>
+</ul>
+<p><strong>Protocolos CSMA</strong></p>
+<ul>
+<li>Consiste em “escutar” o meio físico, para verificar se está livre antes de transmitir.</li>
+</ul>
+<p>O CSMA persistente faz melhor uso da banda, mas tem grandes chances de gerar colisões. O CSMA não persistente faz pior uso da banda, mas tem menor probabilidade de gerar colisões.</p>
+<p><strong>CSMA/CD</strong></p>
+<ul>
+<li>Em caso de colisão em que duas máquinas estão prontas para transmitir, a primeira estação que detectar a colisão interrompe a transmissão, reiniciando após um tempo aleatório (improvável que ocorra nova).</li>
+</ul>
+<p><strong>Mestre - Escravos</strong></p>
+<ul>
+<li><p>O mestre controla todas as transmissões.</p></li>
+<li><p>Os escravos trocam informações apenas com o mestre.</p></li>
+<li><p>O mestre faz uma varredura para saber quem quer transmitir.</p></li>
+<li><p>É possível ter um sistema multi-mestre, nesse caso, os escravos trocam informações apenas com seu mestre.</p></li>
+</ul>
+<p><strong>Token Bus e Token Ring</strong></p>
+<ul>
+<li><p>Protocolo descentralizado.</p></li>
+<li><p>As máquinas que querem transmitir devem “pegar” o token e quando terminar a transmissão, “soltar” o token.</p></li>
+</ul>
+<p><strong>Forcing Headers</strong></p>
+<ul>
+<li><p>Insere um cabeçalho (header) no pacote, juntamente com os dados.</p></li>
+<li><p>O header indica a prioridade de transmissão do pacote, de forma que, quanto menor o número do header, maior é a prioridade.</p></li>
+<li><p>O funcionamento acontece com os pacotes transmitindo bit a bit do header antes de tentar transmitir os dados.</p></li>
+<li><p>Se mais de um pacote quiser transmitir ao mesmo tempo, ambos enviam os bits do header.</p></li>
+<li><p>É feito um AND booleano no meio físico, cuja saída é enviada para as máquinas.</p></li>
+<li><p>Se a máquina enviar um bit e receber um bit diferente como resposta, ela desiste da transmissão.</p></li>
+<li><p>Se a máquina for capaz de transmitir TODO o header, ela ganha acesso ao meio físico e transmitir os dados.</p></li>
+</ul>
+<p><em>OBS: nenhuma máquina pode ter o header igual ao de outra máquina.</em></p>
+<p>Um problema que pode ocorrer é o fato de determinadas máquinas sempre inserirem números com alta prioridade e ganham acesso ao meio físico sempre.</p>
+<p><strong>Comprimento de preâmbulo</strong></p>
+<p><img src="preambulo_1.png" /></p>
+<p>Ex: Cinco estações (0 a 4)</p>
+<p>0→ 000 2→ 010 4→ 100 1→ 001 3→ 011</p>
+<p>Envio do primeiro bit:</p>
+<ul>
+<li>0 AND 0 AND 0 AND 0 AND 1 = 0 (estação 4 desiste pois enviou 1 e recebeu 0).</li>
+</ul>
+<p>Envio do segundo bit:</p>
+<ul>
+<li>0 AND 0 AND 1 AND 1 = 0 (Estações 2 e 3 desistem pois ambas enviaram 1 e receberam 0).</li>
+</ul>
+<p>Envio do terceiro bit:</p>
+<ul>
+<li>0 AND 1 = 0 (Estação 1 desiste pois ela enviou 1 e recebeu 0).</li>
+</ul>
+<p>Como o nó 0 enviou todos os dados do header sem colisão, o nó 0 transmite seus dados até o fim. Fica claro nesse protocolo que as estações que tiverem mais 0 da esquerda para a direita tem maior prioridade.</p>
+<p><img src="preambulo.png" /></p>
+</body>
+</html>
