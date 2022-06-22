@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Resumo completo</title>
+</head>
+<body>
+<h1 id="redes-de-computadores---2ª-etapa">Redes de Computadores - 2ª etapa</h1>
+<h2 id="algoritmo-de-roteamento-em-redes-de-computadores">Algoritmo de roteamento em redes de computadores</h2>
+<ul>
+<li><p>a principal função da camada de rede é rotear da origem ao destino.</p></li>
+<li><p>a origem e o destino não podem estar na mesma rede.</p></li>
+</ul>
+<p>O <strong>Algoritmo de roteamento</strong> decide a linha de saída a ser usada na transmissão do pacote de entrada.</p>
+<p><strong>Roteamento</strong> é diferente de <strong>encaminhamento.</strong></p>
+<ul>
+<li><p>Roteamento é escolher as rotas.</p></li>
+<li><p>Encaminhamento é encaminhar para a saída, mas não decide nada.</p></li>
+</ul>
+<p>Algoritmos de roteamento podem ser não adaptativos. As rotas são calculadas offline (estático).</p>
+<p><strong>Princípio da otimização</strong></p>
+<ul>
+<li>se j está no caminho ótimo entre i e j, o caminho ótimo entre j até k segue o mesmo padrão.</li>
+</ul>
+<p><strong>Roteamento pelo caminho mais curto</strong></p>
+<ul>
+<li>Cria um grafo da sub-rede e o algoritmo encontra o caminho mais curto.</li>
+</ul>
+<p><strong>Dijkstra</strong></p>
+<ul>
+<li>Calcula o custo mínimo do envio. Ao descobrir o menor custo, ele não altera mais.</li>
+</ul>
+<p><strong>Inundação (Flooding)</strong></p>
+<ul>
+<li><p>Envia pacotes para todos os caminhos da rede, exceto a origem. Para verificar o caminho mais curto.</p></li>
+<li><p><strong>Inundação seletiva:</strong> Flooda apenas na direção certa.</p></li>
+</ul>
+<p><strong>Roteamento com vetor de distância</strong></p>
+<ul>
+<li>Faz uma tabela com a melhor distância conhecida. E mostra o caminho pra chegar ao destino. <em>As tabelas são atualizadas com a troca de informações entre os vizinhos.</em></li>
+</ul>
+<p><strong>Algoritmo de roteamento por estado de enlace (link state)</strong></p>
+<ul>
+<li><p>Trabalha testando enlaces dos roteadores conectados.</p></li>
+<li><p>Cada roteador manda um pacote HELLO para colher informações.</p></li>
+</ul>
+<p><strong>Roteamento hierárquico</strong></p>
+<ul>
+<li>Separa os roteadores em regiões (nuvens). Reduz o tamanho das tabelas de roteamento, mas pode aumentar o tamanho dos caminhos.</li>
+</ul>
+<p><img src="roteamentoRegioes.png" /></p>
+<p><strong>Camada de enlace</strong></p>
+<ul>
+<li><p>Um protocolo é usado para transportar um datagrama (pacote) por um enlace.</p></li>
+<li><p>Um datagrama (pacote) pode ser separado e reorganizado no destino.</p></li>
+<li><p>O trabalho da camada de enlace é mover um datagrama (pacote) de um ponto ao outro. Mas os protocolos podem variar.</p></li>
+</ul>
+<p><strong>Possíveis serviços que podem ser oferecidos por um protocolo da camada de enlace:</strong></p>
+<ul>
+<li><p><strong>Enquadramento de dados:</strong> Alguns pacotes da camada de enlace encapsulam o datagrama (pacote) antes de transmiti-lo.</p></li>
+<li><p><strong>Entrega confiável:</strong> Enviar sem erros e na ordem certa.</p></li>
+<li><p><strong>Controle de fluxo:</strong> Enviar os dados sem afogar o receptor.</p></li>
+<li><p><strong>Detecção de erros:</strong> Envia bits de detecção para verificar se há erros.</p></li>
+<li><p><strong>Correção de erros:</strong> Determina onde o erro ocorreu. Talvez pode ser corrigido.</p></li>
+<li><p><strong>Half-duplex:</strong> Não pode transmitir e receber ao mesmo tempo.</p></li>
+<li><p><strong>Full duplex:</strong> Transmite e recebe ao mesmo tempo.</p></li>
+</ul>
+<p><strong>Implementação da camada de enlace</strong></p>
+<ul>
+<li>Possui um controlador de interface de rede. Um único chip implementa vários serviços.</li>
+</ul>
+<p><strong>Técnicas de detecção e correção de erros</strong></p>
+<ul>
+<li>Verifica se os dados X recebidos são iguais aos X originais.</li>
+</ul>
+<p><strong>Verificação de paridade</strong></p>
+<ul>
+<li><p>Força os bits a serem sempre par.</p></li>
+<li><p>Caso o valor for ímpar, significa que ocorreu erro em algum bit.</p></li>
+</ul>
+<p><img src="paridade.png" /></p>
+<p><strong>Soma de verificação</strong></p>
+<ul>
+<li>Os bytes dados são inteiros de 16 bits e somados. O complemento de 1 dessa soma forma a verificação.</li>
+</ul>
+<p><strong>Verificação de redundância cíclica (CRC)</strong></p>
+<ul>
+<li><p>Têm os valores de 0 ou 1 na cadeia de bits.</p></li>
+<li><p>Se o valor não der PAR, significa que tem erro.</p></li>
+</ul>
+<h2 id="protocolos-de-acesso-ao-meio">Protocolos de acesso ao meio</h2>
+<p><strong>MAC Deterministas</strong></p>
+<ul>
+<li>Dá pra estimar o tempo de resposta.</li>
+</ul>
+<p><strong>MAC Não Deterministas</strong></p>
+<ul>
+<li><p>Não dá pra estimar o tempo de resposta.</p></li>
+<li><p>Protocolos CSMA são não deterministas.</p></li>
+</ul>
+<p><strong>Protocolos CSMA</strong></p>
+<ul>
+<li><p>Verifica se o meio físico está live antes de transmitir.</p></li>
+<li><p><strong>CSMA Persistente</strong> aproveita melhor o meio físico, mas tem mais chance de gerar colisão.</p></li>
+<li><p><strong>CSMA Não Persistente</strong> Aproveita menos o meio físico, mas tem pouca chance de gerar colisão.</p></li>
+</ul>
+<p><strong>CSMA/CD</strong></p>
+<ul>
+<li>A primeira máquina que detectar colisão para de transmitir e espera um tempo aleatório.</li>
+</ul>
+<p><strong>Mestre X Escravos</strong></p>
+<ul>
+<li><p>O mestre controla as transmissões.</p></li>
+<li><p>Escravos se comunicam apenas com o mestre.</p></li>
+<li><p>O mestre verifica quem quer transmitir.</p></li>
+<li><p><strong>Sistema multi-mestre:</strong> Os escravos trocam informações apenas com seu mestre.</p></li>
+</ul>
+<p><strong>Token Bus e Token Ring</strong></p>
+<ul>
+<li><p>Protocolo descentralizado.</p></li>
+<li><p>Quem quer transmitir “pega” o token e quando acabar “solta” o token.</p></li>
+</ul>
+<p><strong>Forcing Headers</strong></p>
+<ul>
+<li><p>Insere um cabeçalho junto com os dados.</p></li>
+<li><p>Quanto menor o header, maior é sua prioridade.</p></li>
+<li><p>O header é transmitido bit a bit antes dos dados.</p></li>
+<li><p>Mais de uma máquina pode transmitir este header.</p></li>
+<li><p>É feito um AND booleano, se a máquina enviar um bit e receber um diferente, ela desiste de transmitir.</p></li>
+<li><p>A máquina que transmitir todo o header poderá transmitir seus pacotes.</p></li>
+</ul>
+<p><em>OBS: as máquinas não podem ter headers iguais</em></p>
+<p><strong>Comprimento de preâmbulo</strong></p>
+<ul>
+<li><p>As máquinas que possuem mais zeros a esquerda têm mais prioridade.</p></li>
+<li><p>As máquinas com mais zeros tem a segunda prioridade.</p></li>
+</ul>
+<p><img src="preambulo_1.png" /></p>
+<p><img src="preambulo.png" /></p>
+
+</body>
+</html>
