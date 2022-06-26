@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Resumo Engenharia de Software 2a Etapa</title>
+</head>
+<body>
+<h1 id="revisão-engenharia-de-software---2a-etapa">Revisão Engenharia de Software - 2a Etapa</h1>
+<h2 id="técnicas-e-estratégias-de-testes">Técnicas e estratégias de testes</h2>
+<ul>
+<li><p>Teste é um conjunto de atividades que pode ser planejado antecipadamente e realizado sistematicamente.</p></li>
+<li><p>É possível definir um “template” (esqueleto para teste).</p></li>
+<li><p>Testes são um conjunto de passos ao qual é possível alocar técnicas de projeto e de estratégias específicas.</p></li>
+</ul>
+<h2 id="objetivos-do-teste">Objetivos do teste</h2>
+<p><img src="estrategia%20de%20teste.png" /></p>
+<ul>
+<li><p>O processo de teste, como qualquer outro deve ser revisto continuamente.</p></li>
+<li><p>O objetivo é ampliar a atenção e possibilitar uma maior visibilidade e organização.</p></li>
+<li><p>Resulta em uma maior agilidade e controle nos testes.</p></li>
+</ul>
+<h2 id="fluxo-de-informações-de-testes">Fluxo de informações de testes</h2>
+<ul>
+<li><p>Depuração é a parte mais imprevisível do teste.</p></li>
+<li><p>Um erro pode demorar um tempo indefinido para ser corrigido.</p></li>
+</ul>
+<h2 id="teste-de-caixa-preta">Teste de caixa preta</h2>
+<ul>
+<li><p>É um teste para verificar a saída dos dados usando entradas de vários tipos. <em>(Inserir dados aleatórios)</em>.</p></li>
+<li><p>Quanto mais testado, mais seguro é o teste.</p></li>
+<li><p>São testes realizados na interface do software.</p></li>
+<li><p>Apenas a entrada correta resultará em um resultado correto.</p></li>
+</ul>
+<h2 id="teste-de-caixa-branca">Teste de caixa branca</h2>
+<ul>
+<li><p>Baseia-se nos testes de todos os caminhos lógicos e possíveis.</p></li>
+<li><p>Apresentam um problema logístico com possibilidades infinitas. Mas é possível realizar um número limitado de testes.</p></li>
+</ul>
+<h3 id="teste-do-caminho-básico">Teste do caminho básico</h3>
+<ul>
+<li>Possibilita que o projetista defina uma média de complexidade de execução.</li>
+</ul>
+<p><img src="teste%20caminho%20basico.png" /></p>
+<h3 id="complexidade-ciclomática">Complexidade Ciclomática</h3>
+<ul>
+<li><p>Valores que indicam a complexidade de um programa.</p></li>
+<li><p>O valor computado define o número de caminhos do conjunto básico de um programa.</p></li>
+<li><p>Oferece um limite máximo para o número de testes.</p></li>
+</ul>
+<p><img src="grafo%20de%20fluxo.png" /></p>
+<p>Para definir a complexidade ciclomática basta realizar a seguinte equação:</p>
+<p>C = A - N + 2</p>
+<p>C = complexidade.</p>
+<p>A = Arestas (caminhos).</p>
+<p>N = Nós (bolinhas).</p>
+<p>No exemplo, seria: C = 11 - 9 + 2 = <em>4 caminhos</em></p>
+<h2 id="revisão">Revisão</h2>
+<p>O elemento do diagrama de atividades responsável por uma decisão é representado por um <strong>losango.</strong></p>
+<p>Um conjunto de atividades que pode ser planejado antecipadamente e realizado sistematicamente é a definição de um <strong>teste.</strong></p>
+<p>Conhecendo-se a função específica que um produto projetado deve executar sendo que esses testes podem ser realizados para demonstrar que cada função é totalmente operacional. Esse teste é um teste de <strong>caixa preta.</strong></p>
+<p>Uma aplicação pode ser reutilizada incorporando-se à outros sistemas sem necessidade de mudança ou com algumas configurações. O Reuso nesse caso é de um <strong>sistema.</strong></p>
+<p>Dentro do contexto do desenvolvimento de software com qualidade temos várias iniciativas e boas práticas para nos auxiliar, uma dessas boas práticas está descrita a seguir: “São descrições de objetos que se comunicam e classes que são customizadas para resolver um problema de projeto genérico em um contexto específico”, essa boa prática está falando de <strong>Padrões de projeto.</strong></p>
+<p>Os casos de uso para o desenvolvimento devem ser classificados em função do risco de desenvolvimento e das prioridades estabelecidas pelo usuário, nesse contexto devemos desenvolver primeiro <strong>Risco alto e prioridade alta.</strong></p>
+<p><strong>Entity (Entidade)</strong> é utilizada para modelar informações que tem longa vida no sistema e que frequentemente são persistentes;</p>
+<p><strong>Boundary (Fronteira)</strong> é usada para modelar a interação entre os Usuário e o sistema;</p>
+<p><strong>Control (Controle)</strong> representam coordenação, sequenciamento, transações e controle de outros objetos.</p>
+<p>Num Diagrama de Atividades, Ações e Atividades representam respectivamente: <strong>Procedimentos Atômicos e Procedimento Compostos.</strong></p>
+<p>Existe um diagrama que foi criado para modelar processos, ele é o <strong>Diagrama de atividades.</strong></p>
+<p>A complexidade ciclomática representada pelo grafo:</p>
+<p><img src="complex%20ciclomatica.png" /></p>
+<p>C = 17-13 + 2 = <strong>6</strong></p>
+</body>
+</html>
